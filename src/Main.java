@@ -14,12 +14,21 @@ public class Main {
 
         System.out.println("task 2");
         int[] expenses2 = {14500, 16400, 15800, 13200, 14101};
-        Arrays.sort(expenses2);
-        System.out.println("Минимальная сумма трат за неделю составила " + expenses2[0] + " рублей. " +
-                "Максимальная сумма трат за неделю составила " + expenses2[expenses2.length - 1] + " рублей.");
+        int minValue = Integer.MAX_VALUE;
+        int maxValue = Integer.MIN_VALUE;
+        for (int i = 0; i < expenses2.length; i++) {
+            if (expenses2[i] <= minValue) {
+                minValue = expenses2[i];
+            }
+            if (expenses2[i] >= maxValue) {
+                maxValue = expenses2[i];
+            }
+        }
+        System.out.println("Минимальная сумма трат за неделю составила " + minValue + " рублей. " +
+                "Максимальная сумма трат за неделю составила " + maxValue + " рублей.");
 
         System.out.println("task 3");
-        int [] expenses3 = Arrays.copyOf(expenses2, expenses2.length);
+        int[] expenses3 = Arrays.copyOf(expenses2, expenses2.length);
         sum = 0;
         for (int expens : expenses3) {
             sum += expens;
@@ -37,6 +46,8 @@ public class Main {
             reverseFullName[arrLength - 1 - i] = firstCharacter;
             firstCharacter = reverseFullName[i + 1];
         }
-        System.out.println(Arrays.toString(reverseFullName));
+        for (char c : reverseFullName) {
+            System.out.print(c);
+        }
     }
 }
